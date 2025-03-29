@@ -1,6 +1,7 @@
 extends Node2D
 
 var is_paused: bool;
+var is_subway = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,3 +18,13 @@ func _on_huds_pause() -> void:
 
 func _on_huds_unpause() -> void:
 	get_tree().paused = false;
+
+
+func _on_huds_lvl_up(mode: String) -> void:
+	if(mode == "subway"):
+		if(!is_subway):
+			is_subway = true;
+			$TrainSpawner/SpawnTimer.start()
+		else:
+			$TrainSpawner.counter += 1;
+		

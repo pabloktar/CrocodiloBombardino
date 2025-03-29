@@ -27,5 +27,5 @@ func _on_timer_timeout() -> void:
 	_on_gain_exp(1)
 
 
-func _on_huds_collect_xp() -> void:
-	_on_gain_exp(1)
+func _on_huds_collect_xp(xp = 1) -> void:
+	_on_gain_exp(xp)

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://g1clvvetcrf"]
+
+[ext_resource type="Script" path="res://train.gd" id="1_3ju06"]
+[ext_resource type="Texture2D" uid="uid://cvtp7xkhdoon8" path="res://assets/train.png" id="1_thdw5"]
+[ext_resource type="PackedScene" uid="uid://bffhy288a7irn" path="res://coin.tscn" id="2_fnnjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we5yk"]
+size = Vector2(270, 806)
+
+[node name="Train" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_3ju06")
+coinScene = ExtResource("2_fnnjf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.99998)
+shape = SubResource("RectangleShape2D_we5yk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_thdw5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="coinTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="nextcar" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="coinTimer" to="." method="_on_coin_timer_timeout"]
+[connection signal="timeout" from="nextcar" to="." method="_on_nextcar_timeout"]

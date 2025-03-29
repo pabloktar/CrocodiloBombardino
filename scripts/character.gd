@@ -3,6 +3,7 @@ extends Area2D
 
 @export var speed = 400
 signal collect_xp;
+signal collect_coin;
 
 
 
@@ -10,7 +11,7 @@ signal collect_xp;
 const CLOCKWISE = 1;
 const COUNTERCLOCKWISE = -1;
 var minecraft_mode: bool;
-var pickaxe_angle_speed = PI/2;
+var pickaxe_angle_speed = PI/3*2;
 var pickaxe_direction = CLOCKWISE;
 
 
@@ -54,8 +55,13 @@ func swing_pickaxe(delta: float):
 	
 # can only interact with xp
 func _on_area_entered(area: Area2D) -> void:
-	area.queue_free();
-	collect_xp.emit();
+	
+	if(area.is_in_group("coin")):
+		area.queue_free();
+		collect_coin.emit();
+	else:
+		area.queue_free();
+		collect_xp.emit();
 
 
 func _on_huds_lvl_up(mode: String) -> void:
@@ -63,6 +69,8 @@ func _on_huds_lvl_up(mode: String) -> void:
 		minecraft_mode = true;
 		$Pickaxe.monitoring = true;
 		$Pickaxe.show();
+	if(mode == "tetris"):
+		$Tetris.set_process(true);
 
 
 func _on_pickaxe_area_entered(area: Area2D) -> void:

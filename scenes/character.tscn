@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn7nsm58lcwds"]
+[gd_scene load_steps=10 format=3 uid="uid://dn7nsm58lcwds"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_bhoaq"]
 [ext_resource type="Texture2D" uid="uid://cxn0qxdg4f023" path="res://assets/crocodilo.png" id="1_cj6uk"]
 [ext_resource type="Texture2D" uid="uid://rca7tgofn4xh" path="res://assets/Stone_Pickaxe.webp" id="3_88up0"]
+[ext_resource type="Script" path="res://scripts/tetris.gd" id="4_wd8lu"]
+[ext_resource type="PackedScene" uid="uid://dbgo7vimalbb" path="res://scenes/tetris/tetris_piece_line.tscn" id="5_ljenu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7kr8"]
 size = Vector2(259, 255)
@@ -10,9 +12,18 @@ size = Vector2(259, 255)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxa71"]
 size = Vector2(4.83636, 3.29022)
 
+[sub_resource type="Curve2D" id="Curve2D_1kpxh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -5, -33, 0, 0, 0, 0, 2237, -32)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aowmi"]
+size = Vector2(210.678, 20)
+
 [node name="Character" type="Area2D"]
 position = Vector2(-1, 0)
-collision_mask = 4
+collision_mask = 36
 script = ExtResource("1_bhoaq")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -40,6 +51,29 @@ position = Vector2(186, 185)
 rotation = -0.783882
 scale = Vector2(34.2096, 16.9855)
 shape = SubResource("RectangleShape2D_sxa71")
+
+[node name="Tetris" type="Node2D" parent="."]
+position = Vector2(-1198, -653)
+script = ExtResource("4_wd8lu")
+pieceScene = ExtResource("5_ljenu")
+
+[node name="PieceSpawnPath" type="Path2D" parent="Tetris"]
+curve = SubResource("Curve2D_1kpxh")
+
+[node name="Spawner" type="PathFollow2D" parent="Tetris/PieceSpawnPath"]
+position = Vector2(-5, -33)
+rotation = 0.00044603
+
+[node name="ground" type="Area2D" parent="Tetris"]
+position = Vector2(-50, 1200)
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tetris/ground"]
+position = Vector2(1247, 120)
+scale = Vector2(11.8, 11.8)
+shape = SubResource("RectangleShape2D_aowmi")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="Pickaxe" to="." method="_on_pickaxe_area_entered"]

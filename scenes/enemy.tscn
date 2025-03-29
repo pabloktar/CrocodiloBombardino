@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dltci8ct63hqt" path="res://assets/Bang.png" id="3_vvcd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2y2u"]
-size = Vector2(306, 313)
+size = Vector2(142, 313)
 
 [node name="enemy" type="Area2D"]
 collision_layer = 2
@@ -19,6 +19,7 @@ scale = Vector2(2.38281, 2.4375)
 texture = ExtResource("2_q40kx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_b2y2u")
 
 [node name="Bang" type="Sprite2D" parent="."]

@@ -6,6 +6,7 @@
 radius = 78.0064
 
 [node name="XP_orb" type="Area2D"]
+scale = Vector2(0.360002, 0.360002)
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

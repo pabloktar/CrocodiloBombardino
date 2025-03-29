@@ -14,16 +14,14 @@ var lvl_up_options: int;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$MinecraftHud.hide()
-	$TetrisHud.hide()
-	lvl_up_options = $Lvl_up.get_child_count()
+	$SubwayHud.hide()
+	lvl_up_options = 5;#$Lvl_up.get_child_count() - 1;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(Input.is_key_pressed(activate_key1)):
-		$MinecraftHud.visible = !$MinecraftHud.visible
-	if(Input.is_key_pressed(activate_key2)):
-		$TetrisHud.visible = !$TetrisHud.visible
+		collect_xp.emit(100);
 	
 
 
@@ -42,13 +40,58 @@ func wrap_lvl_up():
 	unpause.emit();
 
 func _on_choice_minecraft_pressed() -> void:
-	$MinecraftHud.show();
-	$Lvl_up/ChoiceMinecraft.hide();
-	lvl_up.emit("minecraft");
+	activate_minecraft();
 	wrap_lvl_up();
 	
 func _on_choice_tetris_pressed() -> void:
+	activate_tetris();
+	wrap_lvl_up();
+
+
+
+func activate_tetris():
 	$TetrisHud.show();
 	$Lvl_up/ChoiceTetris.hide();
 	lvl_up.emit("tetris");
+
+func activate_minecraft():
+	$MinecraftHud.show();
+	$Lvl_up/ChoiceMinecraft.hide();
+	lvl_up.emit("minecraft");
+
+func activate_subway():
+	$SubwayHud.show();
+	$Lvl_up_Subway.hide();
+	lvl_up.emit("subway");
+
+func _on_choice_skip_pressed() -> void:
 	wrap_lvl_up();
+
+
+func _on_choice_subway_pressed() -> void:
+	$Lvl_up.hide();
+	$Lvl_up_Subway.show();
+	
+
+
+func _on_character_collect_coin() -> void:
+	$SubwayHud/coins.coins += 1;
+
+
+func _on_choice_back_Subway_pressed() -> void:
+	$Lvl_up_Subway.hide();
+	$Lvl_up.show()
+
+
+func _on_choice_get_train_pressed() -> void:
+	activate_subway();
+	$Lvl_up_Subway/ChoiceGetTrain.hide()
+	$Lvl_up_Subway/ChoiceUpgradeTrain.show();
+	wrap_lvl_up();
+
+
+func _on_choice_upgrade_train_pressed() -> void:
+	lvl_up.emit("subway");
+	$Lvl_up_Subway.hide();
+	wrap_lvl_up();
+	

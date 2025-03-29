@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbgo7vimalbb"]
+
+[ext_resource type="Script" path="res://scripts/tetris_piece_line.gd" id="1_6rxda"]
+[ext_resource type="Texture2D" uid="uid://dl1a0owknhqol" path="res://assets/Tetromino_image.png" id="2_xvwso"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnxa7"]
+texture = ExtResource("2_xvwso")
+texture_region_size = Vector2i(24, 24)
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+4:3/0 = 0
+3:3/0 = 0
+3:4/0 = 0
+2:4/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+7:3/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+14:1/0 = 0
+14:0/0 = 0
+13:0/0 = 0
+13:1/0 = 0
+11:0/0 = 0
+11:1/0 = 0
+10:1/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o6pme"]
+tile_size = Vector2i(24, 24)
+sources/0 = SubResource("TileSetAtlasSource_fnxa7")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b2ed"]
+size = Vector2(96, 24)
+
+[node name="TetrisPiece" type="Area2D"]
+scale = Vector2(2.5, 2.5)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_6rxda")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_o6pme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, 12)
+shape = SubResource("RectangleShape2D_4b2ed")
+
+[node name="CollisionShape_above" type="CollisionShape2D" parent="."]
+position = Vector2(48, -10.8)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4b2ed")
+
+[node name="fall_timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.1
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="fall_timer" to="." method="_on_fall_timer_timeout"]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://cghmp5a1agpul"]
+
+[ext_resource type="Texture2D" uid="uid://dqs4x1ja5fg1d" path="res://assets/Subway-Surfers-HUD.jpg" id="1_el64f"]
+[ext_resource type="FontFile" uid="uid://lbcsttyp4ojt" path="res://assets/fonts/TitanOne-Regular.ttf" id="2_u1fai"]
+[ext_resource type="Texture2D" uid="uid://dopwigwn5hi0m" path="res://assets/tralalero.png" id="3_mro6g"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="3_uiaf0"]
+[ext_resource type="Script" path="res://scenes/coins.gd" id="4_jcwh8"]
+
+[node name="SubwayHUD" type="Node2D"]
+position = Vector2(2434, 458)
+
+[node name="SAMPLE" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5, -224)
+texture = ExtResource("1_el64f")
+
+[node name="STAR" type="Sprite2D" parent="."]
+position = Vector2(-65, -326)
+texture = ExtResource("1_el64f")
+region_enabled = true
+region_rect = Rect2(3.5, 0, 86, 56.25)
+
+[node name="score" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -343.0
+offset_right = 117.0
+offset_bottom = -299.0
+theme_override_fonts/font = ExtResource("2_u1fai")
+theme_override_font_sizes/font_size = 28
+text = "000000
+"
+script = ExtResource("3_uiaf0")
+
+[node name="coins" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 38.0
+offset_top = -288.0
+offset_right = 58.0
+offset_bottom = -255.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(-89, -40.5)
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_u1fai")
+theme_override_font_sizes/font_size = 28
+text = "0"
+script = ExtResource("4_jcwh8")
+
+[node name="rival score" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 81.0
+offset_top = -124.0
+offset_right = 95.0
+offset_bottom = -102.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(-89, -40.5)
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_u1fai")
+theme_override_font_sizes/font_size = 18
+text = "0"
+
+[node name="high score" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 33.0
+offset_top = -224.0
+offset_right = 81.0
+offset_bottom = -187.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(-89, -40.5)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.960784, 0.854902, 0.313726, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_u1fai")
+theme_override_font_sizes/font_size = 14
+text = "HIGH
+SCORE"
+horizontal_alignment = 1
+
+[node name="COIN" type="Sprite2D" parent="."]
+position = Vector2(78, -270)
+texture = ExtResource("1_el64f")
+region_enabled = true
+region_rect = Rect2(172, 61.75, 42, 42.5)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -2.0
+offset_top = -70.0
+offset_right = 38.0
+offset_bottom = -47.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(56.9999, -158)
+scale = Vector2(0.203643, 0.203643)
+texture = ExtResource("3_mro6g")

@@ -1,25 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdoqh6g0m1qf2"]
+[gd_scene load_steps=12 format=3 uid="uid://bdoqh6g0m1qf2"]
 
 [ext_resource type="Script" path="res://scripts/minecraft.gd" id="1_a3n26"]
 [ext_resource type="Texture2D" uid="uid://b18nbtxwgftkx" path="res://assets/Minecraft HUD.png" id="1_tkjfl"]
-[ext_resource type="Texture2D" uid="uid://dlrhnrqb6hxsb" path="res://assets/Tetris HUD.png" id="3_vljlk"]
+[ext_resource type="PackedScene" uid="uid://cghmp5a1agpul" path="res://scenes/subwayhud.tscn" id="3_idblu"]
 [ext_resource type="Script" path="res://scripts/exp.gd" id="4_mjxnl"]
 [ext_resource type="FontFile" uid="uid://dpseifiba3eth" path="res://assets/fonts/nerd_font.otf" id="5_cm0xh"]
 [ext_resource type="Texture2D" uid="uid://c2rl46u4dplw1" path="res://assets/minecraft_logo.webp" id="5_utdjt"]
 [ext_resource type="Texture2D" uid="uid://ctn1f2e1fpijp" path="res://assets/tetris-logo.png" id="6_6y4hy"]
 [ext_resource type="Script" path="res://scripts/label.gd" id="6_8slkj"]
+[ext_resource type="Texture2D" uid="uid://cwe6vjnk2av8x" path="res://assets/subwayIcon.png" id="8_vfqur"]
+[ext_resource type="Texture2D" uid="uid://br8xreg4m5til" path="res://assets/getTrain.png" id="9_wx2jl"]
+[ext_resource type="Texture2D" uid="uid://pdd81uubbp3u" path="res://assets/upgradeTrain.png" id="10_lerev"]
 
 [node name="Huds" type="CanvasLayer"]
 script = ExtResource("1_a3n26")
 
 [node name="MinecraftHud" type="Sprite2D" parent="."]
-position = Vector2(725, 648)
-scale = Vector2(2.20427, 1.71053)
+position = Vector2(1279, 1346)
+scale = Vector2(1.92045, 1.49028)
 texture = ExtResource("1_tkjfl")
 
-[node name="TetrisHud" type="Sprite2D" parent="."]
-position = Vector2(1315, 151)
-texture = ExtResource("3_vljlk")
+[node name="SubwaySurfersHud" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1279, 1346)
+scale = Vector2(1.92045, 1.49028)
+texture = ExtResource("1_tkjfl")
+
+[node name="SubwayHud" parent="." instance=ExtResource("3_idblu")]
+position = Vector2(2376, 636)
+scale = Vector2(1.78, 1.78)
 
 [node name="EXP" type="Node2D" parent="."]
 script = ExtResource("4_mjxnl")
@@ -54,19 +63,71 @@ process_mode = 3
 visible = false
 
 [node name="ChoiceMinecraft" type="Button" parent="Lvl_up"]
-offset_left = 304.0
-offset_top = 252.0
-offset_right = 824.0
-offset_bottom = 789.0
-scale = Vector2(0.255103, 0.255103)
+offset_left = 484.0
+offset_top = 522.0
+offset_right = 1004.0
+offset_bottom = 1059.0
+scale = Vector2(0.672611, 0.672611)
 icon = ExtResource("5_utdjt")
 
-[node name="ChoiceTetris" type="Button" parent="Lvl_up"]
-offset_left = 739.0
-offset_top = 243.0
-offset_right = 1047.0
-offset_bottom = 447.0
-scale = Vector2(0.399996, 0.679998)
+[node name="ChoiceSubway" type="Button" parent="Lvl_up"]
+offset_left = 1028.0
+offset_top = 530.0
+offset_right = 1164.0
+offset_bottom = 666.0
+scale = Vector2(2.43261, 2.43261)
+icon = ExtResource("8_vfqur")
+
+[node name="ChoiceSkip" type="Button" parent="Lvl_up"]
+offset_left = 1054.0
+offset_top = 964.0
+offset_right = 1574.0
+offset_bottom = 1501.0
+scale = Vector2(0.535105, 0.255103)
+theme_override_fonts/font = ExtResource("5_cm0xh")
+theme_override_font_sizes/font_size = 128
+text = "SKIP"
+
+[node name="Lvl_up_Subway" type="Node2D" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ChoiceGetTrain" type="Button" parent="Lvl_up_Subway"]
+offset_left = 1031.0
+offset_top = 527.0
+offset_right = 1167.0
+offset_bottom = 663.0
+scale = Vector2(2.5, 2.5)
+icon = ExtResource("9_wx2jl")
+
+[node name="ChoiceUpgradeTrain" type="Button" parent="Lvl_up_Subway"]
+visible = false
+offset_left = 1028.0
+offset_top = 530.0
+offset_right = 1164.0
+offset_bottom = 666.0
+scale = Vector2(2.5, 2.5)
+icon = ExtResource("10_lerev")
+
+[node name="ChoiceBack" type="Button" parent="Lvl_up_Subway"]
+offset_left = 1054.0
+offset_top = 964.0
+offset_right = 1574.0
+offset_bottom = 1501.0
+scale = Vector2(0.5371, 0.255103)
+theme_override_fonts/font = ExtResource("5_cm0xh")
+theme_override_font_sizes/font_size = 128
+text = "BACK"
+
+[node name="Disabled" type="Node2D" parent="."]
+visible = false
+
+[node name="ChoiceTetris" type="Button" parent="Disabled"]
+offset_left = 1640.0
+offset_top = 519.0
+offset_right = 1948.0
+offset_bottom = 723.0
+scale = Vector2(0.964698, 1.64)
 icon = ExtResource("6_6y4hy")
 
 [connection signal="collect_xp" from="." to="EXP" method="_on_huds_collect_xp"]
@@ -74,4 +135,9 @@ icon = ExtResource("6_6y4hy")
 [connection signal="lvl_up" from="EXP" to="EXP/Label" method="_on_exp_lvl_up"]
 [connection signal="timeout" from="EXP/autoEXP" to="EXP" method="_on_timer_timeout"]
 [connection signal="pressed" from="Lvl_up/ChoiceMinecraft" to="." method="_on_choice_minecraft_pressed"]
-[connection signal="pressed" from="Lvl_up/ChoiceTetris" to="." method="_on_choice_tetris_pressed"]
+[connection signal="pressed" from="Lvl_up/ChoiceSubway" to="." method="_on_choice_subway_pressed"]
+[connection signal="pressed" from="Lvl_up/ChoiceSkip" to="." method="_on_choice_skip_pressed"]
+[connection signal="pressed" from="Lvl_up_Subway/ChoiceGetTrain" to="." method="_on_choice_get_train_pressed"]
+[connection signal="pressed" from="Lvl_up_Subway/ChoiceUpgradeTrain" to="." method="_on_choice_upgrade_train_pressed"]
+[connection signal="pressed" from="Lvl_up_Subway/ChoiceBack" to="." method="_on_choice_back_Subway_pressed"]
+[connection signal="pressed" from="Disabled/ChoiceTetris" to="." method="_on_choice_tetris_pressed"]

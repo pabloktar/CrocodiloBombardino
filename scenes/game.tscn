@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c243sxb0qa58v"]
+[gd_scene load_steps=9 format=3 uid="uid://c243sxb0qa58v"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_c6d3f"]
 [ext_resource type="PackedScene" uid="uid://dn7nsm58lcwds" path="res://scenes/character.tscn" id="1_x5rk3"]
 [ext_resource type="PackedScene" uid="uid://bdoqh6g0m1qf2" path="res://scenes/huds/huds.tscn" id="4_m4p1o"]
 [ext_resource type="PackedScene" uid="uid://sfi4by3jiv4e" path="res://scenes/enemy.tscn" id="5_clplc"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="5_mpysm"]
+[ext_resource type="Script" path="res://train_spawner.gd" id="6_pbj3o"]
+[ext_resource type="PackedScene" uid="uid://g1clvvetcrf" path="res://train.tscn" id="7_desbw"]
 
 [sub_resource type="Curve2D" id="Curve2D_hidt0"]
 _data = {
@@ -17,16 +19,17 @@ script = ExtResource("1_c6d3f")
 
 [node name="Character" parent="." instance=ExtResource("1_x5rk3")]
 z_index = 1
-position = Vector2(682, 300)
+position = Vector2(1279, 729)
 
 [node name="Huds" parent="." instance=ExtResource("4_m4p1o")]
 
 [node name="enemy" parent="." instance=ExtResource("5_clplc")]
-position = Vector2(326, 292)
+position = Vector2(561, 732)
 scale = Vector2(0.44, 0.44)
 
 [node name="EnemySpawner" type="Path2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(1262, 730)
+scale = Vector2(1.75864, 1.8651)
 curve = SubResource("Curve2D_hidt0")
 script = ExtResource("5_mpysm")
 enemyScene = ExtResource("5_clplc")
@@ -38,8 +41,25 @@ autostart = true
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawner"]
 position = Vector2(-743, -408)
 
+[node name="TrainSpawner" type="Path2D" parent="."]
+position = Vector2(1262, 730)
+scale = Vector2(1.75864, 1.8651)
+curve = SubResource("Curve2D_hidt0")
+script = ExtResource("6_pbj3o")
+trainScene = ExtResource("7_desbw")
+
+[node name="SpawnTimer" type="Timer" parent="TrainSpawner"]
+process_mode = 1
+wait_time = 0.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="TrainSpawner"]
+position = Vector2(-743, -408)
+
+[connection signal="collect_coin" from="Character" to="Huds" method="_on_character_collect_coin"]
 [connection signal="collect_xp" from="Character" to="Huds" method="_on_character_collect_xp"]
+[connection signal="lvl_up" from="Huds" to="." method="_on_huds_lvl_up"]
 [connection signal="lvl_up" from="Huds" to="Character" method="_on_huds_lvl_up"]
 [connection signal="pause" from="Huds" to="." method="_on_huds_pause"]
 [connection signal="unpause" from="Huds" to="." method="_on_huds_unpause"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="TrainSpawner/SpawnTimer" to="TrainSpawner" method="_on_spawn_timer_timeout"]
