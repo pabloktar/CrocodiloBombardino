@@ -1,0 +1,35 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1743251125
+icon.svg::CompressedTexture2D::7603846886580659055::1743185229::1743185247::1::::<><>::
+::res://assets/::1743251125
+Bang.png::CompressedTexture2D::7970699966027539455::1743188289::1743188289::1::::<><>::
+bigXP.png::CompressedTexture2D::1267731241087932749::1743196008::1743196009::1::::<><>::
+crocodilo.png::CompressedTexture2D::6415569392368423182::1743185399::1743185415::1::::<><>::
+gnome.png::CompressedTexture2D::331579052671809392::1743191276::1743191280::1::::<><>::
+hugeXP.webp::CompressedTexture2D::8521640183076777752::1743196005::1743196005::1::::<><>::
+Minecraft HUD.png::CompressedTexture2D::4280247225347755071::1743187417::1743187576::1::::<><>::
+minecraft_logo.webp::CompressedTexture2D::6703755902817947898::1743247578::1743247586::1::::<><>::
+smallXP.webp::CompressedTexture2D::7516099418512274877::1743196002::1743196002::1::::<><>::
+Stone_Pickaxe.webp::CompressedTexture2D::1197397250615428865::1743251116::1743251125::1::::<><>::
+Tetris HUD.png::CompressedTexture2D::7966882904887791753::1743187415::1743187589::1::::<><>::
+tetris-logo.png::CompressedTexture2D::6134855303591320425::1743247564::1743247571::1::::<><>::
+tralalero.png::CompressedTexture2D::8174221938271588406::1743187072::1743187086::1::::<><>::
+::res://assets/fonts/::1743250058
+nerd_font.otf::FontFile::8249510934566897181::1743250028::1743250058::1::::<><>::
+::res://scenes/::1743250899
+character.tscn::PackedScene::8138599249838396208::1743250899::0::1::::<><>::res://scripts/character.gd<>uid://cxn0qxdg4f023::::res://assets/crocodilo.png
+enemy.tscn::PackedScene::1274258689103470210::1743250899::0::1::::<><>::res://scripts/enemy.gd<>uid://rbarsuai6xgt::::res://scenes/xp_orb.tscn<>uid://eyvb8xm0od6g::::res://assets/gnome.png<>uid://dltci8ct63hqt::::res://assets/Bang.png
+game.tscn::PackedScene::6729540531307719631::1743250899::0::1::::<><>::res://scripts/game.gd<>uid://dn7nsm58lcwds::::res://scenes/character.tscn<>uid://bdoqh6g0m1qf2::::res://scenes/huds/huds.tscn<>uid://sfi4by3jiv4e::::res://scenes/enemy.tscn<>res://scripts/enemy_spawner.gd
+xp_orb.tscn::PackedScene::1195306054425320371::1743250899::0::1::::<><>::uid://dfc4cataeausj::::res://assets/smallXP.webp
+::res://scenes/huds/::1743250899
+huds.tscn::PackedScene::2626874114251275957::1743250899::0::1::::<><>::res://scripts/minecraft.gd<>uid://b18nbtxwgftkx::::res://assets/Minecraft HUD.png<>uid://dlrhnrqb6hxsb::::res://assets/Tetris HUD.png<>res://scripts/exp.gd<>uid://dpseifiba3eth::::res://assets/fonts/nerd_font.otf<>uid://c2rl46u4dplw1::::res://assets/minecraft_logo.webp<>uid://ctn1f2e1fpijp::::res://assets/tetris-logo.png<>res://scripts/label.gd
+tetris.tscn::PackedScene::1118785209008447134::1743188844::0::1::::<><>::uid://dlrhnrqb6hxsb::::res://assets/Tetris HUD.png
+::res://scripts/::1743250895
+character.gd::GDScript::-1::1743249400::0::1::::<>Area2D<>::
+enemy.gd::GDScript::-1::1743249183::0::1::::<>Area2D<>::
+enemy_spawner.gd::GDScript::-1::1743248411::0::1::::<>Path2D<>::
+exp.gd::GDScript::-1::1743248500::0::1::::<>Node2D<>::
+game.gd::GDScript::-1::1743249151::0::1::::<>Node2D<>::
+label.gd::GDScript::-1::1743250390::0::1::::<>Label<>::
+minecraft.gd::GDScript::-1::1743250895::0::1::::<>CanvasLayer<>::
+xp_spawner.gd::GDScript::-1::1743188785::0::1::::<>Node2D<>::

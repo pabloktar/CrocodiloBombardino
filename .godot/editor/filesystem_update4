@@ -1,0 +1,14 @@
+res://scenes/huds/huds.tscn
+res://scripts/enemy_spawner.gd
+res://scripts/exp.gd
+res://scenes/huds/minecraft.gd
+res://scenes/game.tscn
+res://scenes/character.tscn
+res://scenes/enemy.tscn
+res://scenes/xp_orb.tscn
+res://scenes/game.gd
+res://scripts/enemy.gd
+res://scenes/character.gd
+res://scripts/label.gd
+res://scripts/minecraft.gd
+res://scripts/character.gd

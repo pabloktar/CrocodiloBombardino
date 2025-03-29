@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://sfi4by3jiv4e"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_31pah"]
+[ext_resource type="PackedScene" uid="uid://rbarsuai6xgt" path="res://scenes/xp_orb.tscn" id="2_hsh1b"]
+[ext_resource type="Texture2D" uid="uid://eyvb8xm0od6g" path="res://assets/gnome.png" id="2_q40kx"]
+[ext_resource type="Texture2D" uid="uid://dltci8ct63hqt" path="res://assets/Bang.png" id="3_vvcd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2y2u"]
+size = Vector2(306, 313)
+
+[node name="enemy" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_31pah")
+xp_scene = ExtResource("2_hsh1b")
+
+[node name="Tralalero" type="Sprite2D" parent="."]
+position = Vector2(0.499996, -3.8147e-06)
+scale = Vector2(2.38281, 2.4375)
+texture = ExtResource("2_q40kx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b2y2u")
+
+[node name="Bang" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_vvcd3")
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

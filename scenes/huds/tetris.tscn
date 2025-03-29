@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://p67h1wdflwq5"]
+
+[ext_resource type="Texture2D" uid="uid://dlrhnrqb6hxsb" path="res://assets/Tetris HUD.png" id="1_c2sb0"]
+
+[node name="Tetris" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1315, 151)
+texture = ExtResource("1_c2sb0")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rbarsuai6xgt"]
+
+[ext_resource type="Texture2D" uid="uid://dfc4cataeausj" path="res://assets/smallXP.webp" id="1_yadk3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvqqk"]
+radius = 78.0064
+
+[node name="XP_orb" type="Area2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.545273, 0.545273)
+texture = ExtResource("1_yadk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yvqqk")

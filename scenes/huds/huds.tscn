@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdoqh6g0m1qf2"]
+
+[ext_resource type="Script" path="res://scripts/minecraft.gd" id="1_a3n26"]
+[ext_resource type="Texture2D" uid="uid://b18nbtxwgftkx" path="res://assets/Minecraft HUD.png" id="1_tkjfl"]
+[ext_resource type="Texture2D" uid="uid://dlrhnrqb6hxsb" path="res://assets/Tetris HUD.png" id="3_vljlk"]
+[ext_resource type="Script" path="res://scripts/exp.gd" id="4_mjxnl"]
+[ext_resource type="FontFile" uid="uid://dpseifiba3eth" path="res://assets/fonts/nerd_font.otf" id="5_cm0xh"]
+[ext_resource type="Texture2D" uid="uid://c2rl46u4dplw1" path="res://assets/minecraft_logo.webp" id="5_utdjt"]
+[ext_resource type="Texture2D" uid="uid://ctn1f2e1fpijp" path="res://assets/tetris-logo.png" id="6_6y4hy"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="6_8slkj"]
+
+[node name="Huds" type="CanvasLayer"]
+script = ExtResource("1_a3n26")
+
+[node name="MinecraftHud" type="Sprite2D" parent="."]
+position = Vector2(725, 648)
+scale = Vector2(2.20427, 1.71053)
+texture = ExtResource("1_tkjfl")
+
+[node name="TetrisHud" type="Sprite2D" parent="."]
+position = Vector2(1315, 151)
+texture = ExtResource("3_vljlk")
+
+[node name="EXP" type="Node2D" parent="."]
+script = ExtResource("4_mjxnl")
+
+[node name="Current bar" type="Line2D" parent="EXP"]
+z_index = 2
+position = Vector2(48, 48)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 15.0
+default_color = Color(0.85521, 0.000690773, 0.874214, 1)
+
+[node name="Full bar" type="Line2D" parent="EXP"]
+position = Vector2(48, 48)
+points = PackedVector2Array(0, 0, 376, 0)
+width = 15.0
+default_color = Color(1, 0.556863, 1, 1)
+
+[node name="autoEXP" type="Timer" parent="EXP"]
+
+[node name="Label" type="Label" parent="EXP"]
+offset_left = 48.0
+offset_top = 55.0
+offset_right = 101.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("5_cm0xh")
+theme_override_font_sizes/font_size = 32
+text = "Lvl: ???"
+script = ExtResource("6_8slkj")
+
+[node name="Lvl_up" type="Node2D" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ChoiceMinecraft" type="Button" parent="Lvl_up"]
+offset_left = 304.0
+offset_top = 252.0
+offset_right = 824.0
+offset_bottom = 789.0
+scale = Vector2(0.255103, 0.255103)
+icon = ExtResource("5_utdjt")
+
+[node name="ChoiceTetris" type="Button" parent="Lvl_up"]
+offset_left = 739.0
+offset_top = 243.0
+offset_right = 1047.0
+offset_bottom = 447.0
+scale = Vector2(0.399996, 0.679998)
+icon = ExtResource("6_6y4hy")
+
+[connection signal="collect_xp" from="." to="EXP" method="_on_huds_collect_xp"]
+[connection signal="lvl_up" from="EXP" to="." method="_on_exp_lvl_up"]
+[connection signal="lvl_up" from="EXP" to="EXP/Label" method="_on_exp_lvl_up"]
+[connection signal="timeout" from="EXP/autoEXP" to="EXP" method="_on_timer_timeout"]
+[connection signal="pressed" from="Lvl_up/ChoiceMinecraft" to="." method="_on_choice_minecraft_pressed"]
+[connection signal="pressed" from="Lvl_up/ChoiceTetris" to="." method="_on_choice_tetris_pressed"]

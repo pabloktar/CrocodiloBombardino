@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn7nsm58lcwds"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_bhoaq"]
+[ext_resource type="Texture2D" uid="uid://cxn0qxdg4f023" path="res://assets/crocodilo.png" id="1_cj6uk"]
+[ext_resource type="Texture2D" uid="uid://rca7tgofn4xh" path="res://assets/Stone_Pickaxe.webp" id="3_88up0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7kr8"]
+size = Vector2(259, 255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxa71"]
+size = Vector2(4.83636, 3.29022)
+
+[node name="Character" type="Area2D"]
+position = Vector2(-1, 0)
+collision_mask = 4
+script = ExtResource("1_bhoaq")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_cj6uk")
+
+[node name="colider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_j7kr8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pickaxe" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickaxe"]
+position = Vector2(161, 137)
+rotation = 1.5712
+scale = Vector2(0.758717, 0.758717)
+texture = ExtResource("3_88up0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickaxe"]
+position = Vector2(186, 185)
+rotation = -0.783882
+scale = Vector2(34.2096, 16.9855)
+shape = SubResource("RectangleShape2D_sxa71")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Pickaxe" to="." method="_on_pickaxe_area_entered"]
