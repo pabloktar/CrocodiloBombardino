@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu1dmmcwk3bii"
+path="res://.godot/imported/Bombardino Crocodilo.mp3-a735dc06109034e37270542cec9814a1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Bombardino Crocodilo.mp3"
+dest_files=["res://.godot/imported/Bombardino Crocodilo.mp3-a735dc06109034e37270542cec9814a1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

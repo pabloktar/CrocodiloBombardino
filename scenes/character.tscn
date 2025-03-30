@@ -1,16 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn7nsm58lcwds"]
+[gd_scene load_steps=12 format=3 uid="uid://dn7nsm58lcwds"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_bhoaq"]
 [ext_resource type="Texture2D" uid="uid://cxn0qxdg4f023" path="res://assets/crocodilo.png" id="1_cj6uk"]
-[ext_resource type="Texture2D" uid="uid://rca7tgofn4xh" path="res://assets/Stone_Pickaxe.webp" id="3_88up0"]
+[ext_resource type="Texture2D" uid="uid://ci0vk2ovubdg8" path="res://assets/pickaxes/Wooden_Pickaxe_JE3_BE3.webp" id="3_heoot"]
 [ext_resource type="Script" path="res://scripts/tetris.gd" id="4_wd8lu"]
 [ext_resource type="PackedScene" uid="uid://dbgo7vimalbb" path="res://scenes/tetris/tetris_piece_line.tscn" id="5_ljenu"]
+[ext_resource type="Texture2D" uid="uid://2h0utjblvb7" path="res://assets/helmets/leather_helmet.png" id="6_ink38"]
+[ext_resource type="AudioStream" uid="uid://cu1dmmcwk3bii" path="res://assets/audio/Bombardino Crocodilo.mp3" id="7_jdmn6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7kr8"]
-size = Vector2(259, 255)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4d40i"]
+radius = 125.126
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxa71"]
-size = Vector2(4.83636, 3.29022)
+size = Vector2(3.0176, 2.56185)
 
 [sub_resource type="Curve2D" id="Curve2D_1kpxh"]
 _data = {
@@ -30,9 +32,14 @@ script = ExtResource("1_bhoaq")
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_cj6uk")
 
+[node name="helmet" type="Sprite2D" parent="Sprite"]
+position = Vector2(75, -101.667)
+scale = Vector2(1.19792, 1.19792)
+texture = ExtResource("6_ink38")
+
 [node name="colider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_j7kr8")
+shape = SubResource("CircleShape2D_4d40i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -44,10 +51,10 @@ collision_mask = 2
 position = Vector2(161, 137)
 rotation = 1.5712
 scale = Vector2(0.758717, 0.758717)
-texture = ExtResource("3_88up0")
+texture = ExtResource("3_heoot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickaxe"]
-position = Vector2(186, 185)
+position = Vector2(176.63, 160.613)
 rotation = -0.783882
 scale = Vector2(34.2096, 16.9855)
 shape = SubResource("RectangleShape2D_sxa71")
@@ -75,5 +82,24 @@ position = Vector2(1247, 120)
 scale = Vector2(11.8, 11.8)
 shape = SubResource("RectangleShape2D_aowmi")
 
+[node name="HP" type="Node2D" parent="."]
+
+[node name="Full bar" type="Line2D" parent="HP"]
+position = Vector2(-188, 142)
+points = PackedVector2Array(0, 0, 376, 0)
+width = 15.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Current bar" type="Line2D" parent="HP/Full bar"]
+z_index = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 15.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_jdmn6")
+autoplay = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="Pickaxe" to="." method="_on_pickaxe_area_entered"]
+[connection signal="finished" from="AudioPlayer" to="." method="_on_audio_player_finished"]

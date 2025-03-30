@@ -37,11 +37,13 @@ func _on_exp_lvl_up() -> void:
 		
 func wrap_lvl_up():
 	$Lvl_up.hide();
+	$Lvl_up_Minecraft.hide();
+	$Lvl_up_Subway.hide();
 	unpause.emit();
 
 func _on_choice_minecraft_pressed() -> void:
-	activate_minecraft();
-	wrap_lvl_up();
+	$Lvl_up.hide();
+	$Lvl_up_Minecraft.show()
 	
 func _on_choice_tetris_pressed() -> void:
 	activate_tetris();
@@ -56,8 +58,6 @@ func activate_tetris():
 
 func activate_minecraft():
 	$MinecraftHud.show();
-	$Lvl_up/ChoiceMinecraft.hide();
-	lvl_up.emit("minecraft");
 
 func activate_subway():
 	$SubwayHud.show();
@@ -66,6 +66,7 @@ func activate_subway():
 
 func _on_choice_skip_pressed() -> void:
 	wrap_lvl_up();
+
 
 
 func _on_choice_subway_pressed() -> void:
@@ -95,3 +96,36 @@ func _on_choice_upgrade_train_pressed() -> void:
 	$Lvl_up_Subway.hide();
 	wrap_lvl_up();
 	
+func _on_character_death():
+	pause.emit();
+	$DeathScreen.show()
+
+
+func _on_choice_get_pickaxe_pressed() -> void:
+	activate_minecraft()
+	lvl_up.emit("minecraft");
+	
+	$Lvl_up_Minecraft/ChoiceGetPickaxe.hide()
+	$Lvl_up_Minecraft/ChoiceUpgradePickaxe.show();
+	
+	wrap_lvl_up();
+
+
+func _on_choice_upgrade_pickaxe_pressed() -> void:
+	lvl_up.emit("pickaxe")
+	wrap_lvl_up();
+
+
+func _on_choice_get_armor_pressed() -> void:
+	activate_minecraft();
+	lvl_up.emit("helmet");
+	wrap_lvl_up();
+
+
+func _on_choice_upgrade_armor_pressed() -> void:
+	lvl_up.emit("helmet");
+	wrap_lvl_up();
+
+
+func _on_start_pressed() -> void:
+	get_tree().reload_current_scene()

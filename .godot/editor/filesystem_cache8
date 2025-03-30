@@ -1,21 +1,31 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1743278674
+::res://::1743338275
 coin.gd::GDScript::-1::1743277174::0::1::::<>Area2D<>::
-coin.tscn::PackedScene::2748156139266280783::1743277869::0::1::::<><>::uid://bsvm0n3a6v841::::res://assets/Screenshot 2025-03-29 at 20.28.08.png<>res://coin.gd<>uid://buxrpynin8mt0::::res://assets/Screenshot 2025-03-29 at 20.28.13.png<>uid://d2853n221vft2::::res://assets/Screenshot 2025-03-29 at 20.28.25.png<>uid://b13ksl0e0l6hy::::res://assets/Screenshot 2025-03-29 at 20.28.25 copy.png<>uid://dmi04jkinpp0c::::res://assets/Screenshot 2025-03-29 at 20.28.13 copy.png
+coin.tscn::PackedScene::2748156139266280783::1743338275::0::1::::<><>::uid://bsvm0n3a6v841::::res://assets/Screenshot 2025-03-29 at 20.28.08.png<>res://coin.gd<>uid://buxrpynin8mt0::::res://assets/Screenshot 2025-03-29 at 20.28.13.png<>uid://d2853n221vft2::::res://assets/Screenshot 2025-03-29 at 20.28.25.png<>uid://b13ksl0e0l6hy::::res://assets/Screenshot 2025-03-29 at 20.28.25 copy.png<>uid://dmi04jkinpp0c::::res://assets/Screenshot 2025-03-29 at 20.28.13 copy.png
 icon.svg::CompressedTexture2D::7603846886580659055::1743253702::1743253888::1::::<><>::
-train.gd::GDScript::-1::1743277018::0::1::::<>Area2D<>::
-train.tscn::PackedScene::13969091082079751::1743277496::0::1::::<><>::res://train.gd<>uid://cvtp7xkhdoon8::::res://assets/train.png<>uid://bffhy288a7irn::::res://coin.tscn
-train_spawner.gd::GDScript::-1::1743274376::0::1::::<>Path2D<>::
-::res://assets/::1743278674
+default_bus_layout.tres::AudioBusLayout::8511590926302358167::1743337138::0::1::::<><>::
+rival_score.gd::GDScript::-1::1743331092::0::1::::<>Label<>::
+train.gd::GDScript::-1::1743281825::0::1::::<>Area2D<>::
+train.tscn::PackedScene::13969091082079751::1743338275::0::1::::<><>::res://train.gd<>uid://cvtp7xkhdoon8::::res://assets/train.png<>uid://bffhy288a7irn::::res://coin.tscn
+train_spawner.gd::GDScript::-1::1743279409::0::1::::<>Path2D<>::
+::res://assets/::1743337569
+Are_you_deadass.png::CompressedTexture2D::4047304032807096785::1743329737::1743329738::1::::<><>::
+armor_get.png::CompressedTexture2D::1605300013249619647::1743332040::1743332040::1::::<><>::
+armor_upgrade.png::CompressedTexture2D::3281613402089277218::1743332040::1743332040::1::::<><>::
 Bang.png::CompressedTexture2D::7970699966027539455::1743253702::1743253888::1::::<><>::
 bigXP.png::CompressedTexture2D::1267731241087932749::1743253702::1743253888::1::::<><>::
+Bombardino Crocodilo.mp3::AudioStreamMP3::6443012694072648516::1743337569::1743337569::1::::<><>::
 Coin.obj::Mesh::3774721316830453327::1743276277::1743276278::1::::<><>::
 crocodilo.png::CompressedTexture2D::6415569392368423182::1743253702::1743253888::1::::<><>::
+diamond_helmet.webp::CompressedTexture2D::8486393048396486451::1743333496::1743333497::1::::<><>::
 getTrain.png::CompressedTexture2D::3649182561450727863::1743278652::1743278667::1::::<><>::
 gnome.png::CompressedTexture2D::331579052671809392::1743253702::1743253888::1::::<><>::
+grass.png::CompressedTexture2D::4442583710799869123::1743335183::1743335195::1::::<><>::
 hugeXP.webp::CompressedTexture2D::8521640183076777752::1743253702::1743253888::1::::<><>::
 Minecraft HUD.png::CompressedTexture2D::4280247225347755071::1743253702::1743253888::1::::<><>::
 minecraft_logo.webp::CompressedTexture2D::6703755902817947898::1743253702::1743253888::1::::<><>::
+pickaxe_get.png::CompressedTexture2D::5485629420166138042::1743332040::1743332040::1::::<><>::
+pickaxe_upgrade.png::CompressedTexture2D::8495907493563983751::1743332040::1743332040::1::::<><>::
 Screenshot 2025-03-29 at 20.28.08.png::CompressedTexture2D::3693945776874125712::1743276626::1743276626::1::::<><>::
 Screenshot 2025-03-29 at 20.28.13 copy.png::CompressedTexture2D::8019613398150232536::1743276730::1743276731::1::::<><>::
 Screenshot 2025-03-29 at 20.28.13.png::CompressedTexture2D::3838738501607755111::1743276626::1743276626::1::::<><>::
@@ -31,30 +41,49 @@ Tetromino_image.png::CompressedTexture2D::7985058567335455855::1743254780::17432
 train.png::CompressedTexture2D::6286999385216192915::1743272193::1743272210::1::::<><>::
 tralalero.png::CompressedTexture2D::8174221938271588406::1743253702::1743253888::1::::<><>::
 upgradeTrain.png::CompressedTexture2D::1059268267423120544::1743278652::1743278674::1::::<><>::
+::res://assets/audio/::1743338574
+Bombardino Crocodilo.mp3::AudioStreamMP3::6230496276641417308::1743337574::1743337574::1::::<><>::
+c418-sweden-minecraft-volume-alpha.ogg::AudioStreamOggVorbis::1751121386035540744::1743336445::1743337679::1::::<><>::
+Low-Subway-Surfers-Theme-Sound-Effect.mp3::AudioStreamMP3::2514690777253823249::1743338574::1743338574::1::::<><>::
+Scary Tiktok Music - Meme Effect Sound.mp3::AudioStreamMP3::8103500555181458942::1743336992::1743337686::1::::<><>::
+Subway-Surfers-Theme-Sound-Effect.mp3::AudioStreamMP3::3587506012639443350::1743336415::1743337689::1::::<><>::
 ::res://assets/fonts/::1743270784
 nerd_font.otf::FontFile::8249510934566897181::1743253702::1743253888::1::::<><>::
 TitanOne-Regular.ttf::FontFile::774296264454825237::1743268709::1743268731::1::::<><>::
-::res://scenes/::1743277869
-character.tscn::PackedScene::8138599249838396208::1743277869::0::1::::<><>::res://scripts/character.gd<>uid://cxn0qxdg4f023::::res://assets/crocodilo.png<>uid://rca7tgofn4xh::::res://assets/Stone_Pickaxe.webp<>res://scripts/tetris.gd<>uid://dbgo7vimalbb::::res://scenes/tetris/tetris_piece_line.tscn
+::res://assets/helmets/::1743335195
+diamond_helmet.png::CompressedTexture2D::2095320917279052222::1743334126::1743334126::1::::<><>::
+iron_helmet.png::CompressedTexture2D::4381007101472711731::1743334126::1743334126::1::::<><>::
+leather_helmet.png::CompressedTexture2D::56208943385600222::1743334126::1743334126::1::::<><>::
+netherite_helmet.png::CompressedTexture2D::3959986521304425413::1743334126::1743334126::1::::<><>::
+::res://assets/pickaxes/::1743333010
+Diamond_Pickaxe_JE3_BE3.webp::CompressedTexture2D::3706766511810947766::1743333010::1743333010::1::::<><>::
+Iron_Pickaxe_JE3_BE2.webp::CompressedTexture2D::6727650706352629282::1743333010::1743333010::1::::<><>::
+Netherite_Pickaxe_JE3.webp::CompressedTexture2D::6859508264608591225::1743333010::1743333010::1::::<><>::
+Stone_Pickaxe_JE2_BE2 (1).webp::CompressedTexture2D::3417450852150838788::1743333010::1743333010::1::::<><>::
+Wooden_Pickaxe_JE3_BE3.webp::CompressedTexture2D::5387255915867729633::1743333010::1743333010::1::::<><>::
+::res://scenes/::1743338275
+character.tscn::PackedScene::8138599249838396208::1743338275::0::1::::<><>::res://scripts/character.gd<>uid://cxn0qxdg4f023::::res://assets/crocodilo.png<>uid://ci0vk2ovubdg8::::res://assets/pickaxes/Wooden_Pickaxe_JE3_BE3.webp<>res://scripts/tetris.gd<>uid://dbgo7vimalbb::::res://scenes/tetris/tetris_piece_line.tscn<>uid://2h0utjblvb7::::res://assets/helmets/leather_helmet.png<>uid://cu1dmmcwk3bii::::res://assets/audio/Bombardino Crocodilo.mp3
 coins.gd::GDScript::-1::1743277646::0::1::::<>Label<>::
-enemy.tscn::PackedScene::1274258689103470210::1743277869::0::1::::<><>::res://scripts/enemy.gd<>uid://rbarsuai6xgt::::res://scenes/xp_orb.tscn<>uid://eyvb8xm0od6g::::res://assets/gnome.png<>uid://dltci8ct63hqt::::res://assets/Bang.png
-game.tscn::PackedScene::6729540531307719631::1743277869::0::1::::<><>::res://scripts/game.gd<>uid://dn7nsm58lcwds::::res://scenes/character.tscn<>uid://bdoqh6g0m1qf2::::res://scenes/huds/huds.tscn<>uid://sfi4by3jiv4e::::res://scenes/enemy.tscn<>res://scripts/enemy_spawner.gd<>res://train_spawner.gd<>uid://g1clvvetcrf::::res://train.tscn
-subwayhud.tscn::PackedScene::5209182041196665055::1743277869::0::1::::<><>::uid://dqs4x1ja5fg1d::::res://assets/Subway-Surfers-HUD.jpg<>uid://lbcsttyp4ojt::::res://assets/fonts/TitanOne-Regular.ttf<>uid://dopwigwn5hi0m::::res://assets/tralalero.png<>res://scripts/score.gd<>res://scenes/coins.gd
+enemy.tscn::PackedScene::1274258689103470210::1743338275::0::1::::<><>::res://scripts/enemy.gd<>uid://rbarsuai6xgt::::res://scenes/xp_orb.tscn<>uid://eyvb8xm0od6g::::res://assets/gnome.png<>uid://dltci8ct63hqt::::res://assets/Bang.png
+game.tscn::PackedScene::6729540531307719631::1743338275::0::1::::<><>::res://scripts/game.gd<>uid://dn7nsm58lcwds::::res://scenes/character.tscn<>uid://bdoqh6g0m1qf2::::res://scenes/huds/huds.tscn<>uid://sfi4by3jiv4e::::res://scenes/enemy.tscn<>res://scripts/enemy_spawner.gd<>res://train_spawner.gd<>uid://g1clvvetcrf::::res://train.tscn<>uid://b4kax7tprrlc2::::res://assets/grass.png
+menu.gd::GDScript::-1::1743330695::0::1::::<>Node<>::
+menu.tscn::PackedScene::986141125428905265::1743338275::0::1::::<><>::res://scenes/menu.gd
+subwayhud.tscn::PackedScene::5209182041196665055::1743338275::0::1::::<><>::uid://dqs4x1ja5fg1d::::res://assets/Subway-Surfers-HUD.jpg<>uid://lbcsttyp4ojt::::res://assets/fonts/TitanOne-Regular.ttf<>uid://dopwigwn5hi0m::::res://assets/tralalero.png<>res://scripts/score.gd<>res://scenes/coins.gd<>res://rival_score.gd
 tetris_tileset.tres::TileSet::4525826315775743094::1743265655::0::1::::<><>::uid://dl1a0owknhqol::::res://assets/Tetromino_image.png
 xp_orb.tscn::PackedScene::1195306054425320371::1743259866::0::1::::<><>::uid://dfc4cataeausj::::res://assets/smallXP.webp
-::res://scenes/huds/::1743277959
-huds.tscn::PackedScene::2626874114251275957::1743277959::0::1::::<><>::res://scripts/minecraft.gd<>uid://b18nbtxwgftkx::::res://assets/Minecraft HUD.png<>uid://cghmp5a1agpul::::res://scenes/subwayhud.tscn<>res://scripts/exp.gd<>uid://dpseifiba3eth::::res://assets/fonts/nerd_font.otf<>uid://c2rl46u4dplw1::::res://assets/minecraft_logo.webp<>uid://ctn1f2e1fpijp::::res://assets/tetris-logo.png<>res://scripts/label.gd<>uid://cwe6vjnk2av8x::::res://assets/subwayIcon.png<>uid://rca7tgofn4xh::::res://assets/Stone_Pickaxe.webp
+::res://scenes/huds/::1743338275
+huds.tscn::PackedScene::2626874114251275957::1743338275::0::1::::<><>::res://scripts/minecraft.gd<>uid://b18nbtxwgftkx::::res://assets/Minecraft HUD.png<>uid://cghmp5a1agpul::::res://scenes/subwayhud.tscn<>res://scripts/exp.gd<>uid://dpseifiba3eth::::res://assets/fonts/nerd_font.otf<>uid://c2rl46u4dplw1::::res://assets/minecraft_logo.webp<>uid://ctn1f2e1fpijp::::res://assets/tetris-logo.png<>res://scripts/label.gd<>uid://cwe6vjnk2av8x::::res://assets/subwayIcon.png<>uid://br8xreg4m5til::::res://assets/getTrain.png<>uid://pdd81uubbp3u::::res://assets/upgradeTrain.png<>uid://ckfjrrpc3spbm::::res://assets/pickaxe_get.png<>uid://bxwsrhb3cqgn6::::res://assets/Are_you_deadass.png<>uid://dtbqmcs4trpk6::::res://assets/pickaxe_upgrade.png<>uid://w4vb6r12ge3x::::res://assets/armor_get.png<>uid://bm0vxto1vcgsg::::res://assets/armor_upgrade.png
 tetris.tscn::PackedScene::1118785209008447134::1743253702::0::1::::<><>::uid://dlrhnrqb6hxsb::::res://assets/Tetris HUD.png
 ::res://scenes/tetris/::1743277496
 tetris_piece_line.tscn::PackedScene::213021925307053775::1743277496::0::1::::<><>::res://scripts/tetris_piece_line.gd<>uid://dl1a0owknhqol::::res://assets/Tetromino_image.png
-::res://scripts/::1743277868
-character.gd::GDScript::-1::1743277868::0::1::::<>Area2D<>::
-enemy.gd::GDScript::-1::1743253931::0::1::::<>Area2D<>::
-enemy_spawner.gd::GDScript::-1::1743265655::0::1::::<>Path2D<>::
+::res://scripts/::1743338273
+character.gd::GDScript::-1::1743338273::0::1::::<>Area2D<>::
+enemy.gd::GDScript::-1::1743329514::0::1::::<>Area2D<>::
+enemy_spawner.gd::GDScript::-1::1743327262::0::1::::<>Path2D<>::
 exp.gd::GDScript::-1::1743267452::0::1::::<>Node2D<>::
-game.gd::GDScript::-1::1743275487::0::1::::<>Node2D<>::
+game.gd::GDScript::-1::1743280516::0::1::::<>Node2D<>::
 label.gd::GDScript::-1::1743253931::0::1::::<>Label<>::
-minecraft.gd::GDScript::-1::1743277646::0::1::::<>CanvasLayer<>::
+minecraft.gd::GDScript::-1::1743334897::0::1::::<>CanvasLayer<>::
 score.gd::GDScript::-1::1743271543::0::1::::<>Label<>::
 tetris.gd::GDScript::-1::1743267668::0::1::::<>Node2D<>::
 tetris_piece_line.gd::GDScript::-1::1743267705::0::1::::<>Area2D<>::

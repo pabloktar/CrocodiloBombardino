@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdoqh6g0m1qf2"]
+[gd_scene load_steps=17 format=3 uid="uid://bdoqh6g0m1qf2"]
 
 [ext_resource type="Script" path="res://scripts/minecraft.gd" id="1_a3n26"]
 [ext_resource type="Texture2D" uid="uid://b18nbtxwgftkx" path="res://assets/Minecraft HUD.png" id="1_tkjfl"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cwe6vjnk2av8x" path="res://assets/subwayIcon.png" id="8_vfqur"]
 [ext_resource type="Texture2D" uid="uid://br8xreg4m5til" path="res://assets/getTrain.png" id="9_wx2jl"]
 [ext_resource type="Texture2D" uid="uid://pdd81uubbp3u" path="res://assets/upgradeTrain.png" id="10_lerev"]
+[ext_resource type="Texture2D" uid="uid://ckfjrrpc3spbm" path="res://assets/pickaxe_get.png" id="11_byfux"]
+[ext_resource type="Texture2D" uid="uid://bxwsrhb3cqgn6" path="res://assets/Are_you_deadass.png" id="12_6i8u7"]
+[ext_resource type="Texture2D" uid="uid://dtbqmcs4trpk6" path="res://assets/pickaxe_upgrade.png" id="12_y2c7a"]
+[ext_resource type="Texture2D" uid="uid://w4vb6r12ge3x" path="res://assets/armor_get.png" id="13_c1ydi"]
+[ext_resource type="Texture2D" uid="uid://bm0vxto1vcgsg" path="res://assets/armor_upgrade.png" id="14_txej3"]
 
 [node name="Huds" type="CanvasLayer"]
 script = ExtResource("1_a3n26")
@@ -119,6 +124,54 @@ theme_override_fonts/font = ExtResource("5_cm0xh")
 theme_override_font_sizes/font_size = 128
 text = "BACK"
 
+[node name="Lvl_up_Minecraft" type="Node2D" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ChoiceGetPickaxe" type="Button" parent="Lvl_up_Minecraft"]
+offset_left = 626.0
+offset_top = 537.0
+offset_right = 762.0
+offset_bottom = 673.0
+scale = Vector2(2.5, 2.5)
+icon = ExtResource("11_byfux")
+
+[node name="ChoiceUpgradePickaxe" type="Button" parent="Lvl_up_Minecraft"]
+visible = false
+offset_left = 623.0
+offset_top = 540.0
+offset_right = 759.0
+offset_bottom = 676.0
+scale = Vector2(2.5, 2.5)
+icon = ExtResource("12_y2c7a")
+
+[node name="ChoiceGetArmor" type="Button" parent="Lvl_up_Minecraft"]
+offset_left = 1378.0
+offset_top = 529.0
+offset_right = 1514.0
+offset_bottom = 665.0
+scale = Vector2(2.5, 2.5)
+icon = ExtResource("13_c1ydi")
+
+[node name="ChoiceUpgradeArmor" type="Button" parent="Lvl_up_Minecraft"]
+visible = false
+offset_left = 1375.0
+offset_top = 532.0
+offset_right = 1511.0
+offset_bottom = 668.0
+scale = Vector2(2.5, 2.5)
+icon = ExtResource("14_txej3")
+
+[node name="ChoiceBack" type="Button" parent="Lvl_up_Minecraft"]
+offset_left = 1054.0
+offset_top = 964.0
+offset_right = 1574.0
+offset_bottom = 1501.0
+scale = Vector2(0.5371, 0.255103)
+theme_override_fonts/font = ExtResource("5_cm0xh")
+theme_override_font_sizes/font_size = 128
+text = "BACK"
+
 [node name="Disabled" type="Node2D" parent="."]
 visible = false
 
@@ -130,6 +183,27 @@ offset_bottom = 723.0
 scale = Vector2(0.964698, 1.64)
 icon = ExtResource("6_6y4hy")
 
+[node name="DeathScreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1276.5, 722)
+scale = Vector2(1.33281, 1.32593)
+texture = ExtResource("12_6i8u7")
+
+[node name="Start" type="Button" parent="DeathScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1192.22
+offset_top = -362.011
+offset_right = -736.216
+offset_bottom = -179.011
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "Restart"
+
 [connection signal="collect_xp" from="." to="EXP" method="_on_huds_collect_xp"]
 [connection signal="lvl_up" from="EXP" to="." method="_on_exp_lvl_up"]
 [connection signal="lvl_up" from="EXP" to="EXP/Label" method="_on_exp_lvl_up"]
@@ -140,4 +214,10 @@ icon = ExtResource("6_6y4hy")
 [connection signal="pressed" from="Lvl_up_Subway/ChoiceGetTrain" to="." method="_on_choice_get_train_pressed"]
 [connection signal="pressed" from="Lvl_up_Subway/ChoiceUpgradeTrain" to="." method="_on_choice_upgrade_train_pressed"]
 [connection signal="pressed" from="Lvl_up_Subway/ChoiceBack" to="." method="_on_choice_back_Subway_pressed"]
+[connection signal="pressed" from="Lvl_up_Minecraft/ChoiceGetPickaxe" to="." method="_on_choice_get_pickaxe_pressed"]
+[connection signal="pressed" from="Lvl_up_Minecraft/ChoiceUpgradePickaxe" to="." method="_on_choice_upgrade_pickaxe_pressed"]
+[connection signal="pressed" from="Lvl_up_Minecraft/ChoiceGetArmor" to="." method="_on_choice_get_armor_pressed"]
+[connection signal="pressed" from="Lvl_up_Minecraft/ChoiceUpgradeArmor" to="." method="_on_choice_upgrade_armor_pressed"]
+[connection signal="pressed" from="Lvl_up_Minecraft/ChoiceBack" to="." method="_on_choice_back_Subway_pressed"]
 [connection signal="pressed" from="Disabled/ChoiceTetris" to="." method="_on_choice_tetris_pressed"]
+[connection signal="pressed" from="DeathScreen/Start" to="." method="_on_start_pressed"]

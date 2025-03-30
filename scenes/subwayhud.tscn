@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cghmp5a1agpul"]
+[gd_scene load_steps=7 format=3 uid="uid://cghmp5a1agpul"]
 
 [ext_resource type="Texture2D" uid="uid://dqs4x1ja5fg1d" path="res://assets/Subway-Surfers-HUD.jpg" id="1_el64f"]
 [ext_resource type="FontFile" uid="uid://lbcsttyp4ojt" path="res://assets/fonts/TitanOne-Regular.ttf" id="2_u1fai"]
 [ext_resource type="Texture2D" uid="uid://dopwigwn5hi0m" path="res://assets/tralalero.png" id="3_mro6g"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_uiaf0"]
 [ext_resource type="Script" path="res://scenes/coins.gd" id="4_jcwh8"]
+[ext_resource type="Script" path="res://rival_score.gd" id="5_w0erw"]
 
 [node name="SubwayHUD" type="Node2D"]
 position = Vector2(2434, 458)
@@ -61,6 +62,7 @@ size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_u1fai")
 theme_override_font_sizes/font_size = 18
 text = "0"
+script = ExtResource("5_w0erw")
 
 [node name="high score" type="Label" parent="."]
 anchors_preset = 10

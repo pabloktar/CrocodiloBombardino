@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2y2u"]
 size = Vector2(142, 313)
 
-[node name="enemy" type="Area2D"]
+[node name="enemy" type="Area2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_31pah")
 xp_scene = ExtResource("2_hsh1b")
@@ -28,4 +28,11 @@ texture = ExtResource("3_vvcd3")
 
 [node name="DeathTimer" type="Timer" parent="."]
 
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
