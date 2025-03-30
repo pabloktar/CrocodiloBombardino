@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://djir7ttfv6ycp"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ue27f"]
+[ext_resource type="PackedScene" uid="uid://rbarsuai6xgt" path="res://scenes/xp_orb.tscn" id="2_syb80"]
+[ext_resource type="Texture2D" uid="uid://d0qt40e6hcalg" path="res://assets/enemies/chillguy-walk.png" id="3_lmmg2"]
+[ext_resource type="Texture2D" uid="uid://dltci8ct63hqt" path="res://assets/Bang.png" id="4_tsvkm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2wwn"]
+atlas = ExtResource("3_lmmg2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_are8e"]
+atlas = ExtResource("3_lmmg2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc683"]
+atlas = ExtResource("3_lmmg2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odkai"]
+atlas = ExtResource("3_lmmg2")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laa1u"]
+atlas = ExtResource("3_lmmg2")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l24m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2wwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_are8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc683")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odkai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laa1u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2y2u"]
+size = Vector2(176, 313)
+
+[node name="enemy" type="Area2D" groups=["enemy"]]
+scale = Vector2(1.9, 1.9)
+collision_layer = 2
+script = ExtResource("1_ue27f")
+speed = 150
+xp_scene = ExtResource("2_syb80")
+hp = 100
+
+[node name="Tralalero" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.499996, -3.8147e-06)
+scale = Vector2(2.38281, 2.4375)
+sprite_frames = SubResource("SpriteFrames_2l24m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_b2y2u")
+
+[node name="Bang" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_tsvkm")
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

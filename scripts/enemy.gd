@@ -10,26 +10,36 @@ var is_on_cooldown = false;
 @export var speed = 200;
 @export var damage = 10;
 @export var xp_scene: PackedScene;
+@export var hp = 1;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE;
 	$Bang.hide();
 	character = $"../Character";
-
+	$Tralalero.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(!is_dead):
 		var velocity = character.global_position - global_position
 		position += velocity.normalized() * speed * delta
+		if(velocity.x < 0):
+			$Tralalero.scale.x = - abs($Tralalero.scale.x);
+		elif (velocity.x > 0):
+			$Tralalero.scale.x = abs($Tralalero.scale.x);
+		if(Input.is_key_pressed(KEY_SPACE)):
+			if(character.nuke_radius >= velocity.length() and !character.nuke_cooldown):
+				hp -= 1;
+				if(hp == 0):
+					die()
 	
-	if(Input.is_key_pressed(KEY_SPACE)):
-		die()
 		
 	if(is_damaging and !is_on_cooldown):
 		character.take_damage(damage);
 		cooldown()
+		
+	
 
 func die():
 	if(is_dead):

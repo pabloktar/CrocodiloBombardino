@@ -16,3 +16,8 @@ res://default_bus_layout.tres
 res://scripts/game.gd
 res://death_screen.tscn
 res://death_screen.gd
+res://scenes/enemies/patric.tscn
+res://scenes/enemies/enemy.tscn
+res://scenes/enemies/boss.tscn
+res://victory.tscn
+res://victory.gd

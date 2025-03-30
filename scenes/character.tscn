@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn7nsm58lcwds"]
+[gd_scene load_steps=14 format=3 uid="uid://dn7nsm58lcwds"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_bhoaq"]
 [ext_resource type="Texture2D" uid="uid://cxn0qxdg4f023" path="res://assets/crocodilo.png" id="1_cj6uk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dbgo7vimalbb" path="res://scenes/tetris/tetris_piece_line.tscn" id="5_ljenu"]
 [ext_resource type="Texture2D" uid="uid://2h0utjblvb7" path="res://assets/helmets/leather_helmet.png" id="6_ink38"]
 [ext_resource type="AudioStream" uid="uid://cu1dmmcwk3bii" path="res://assets/audio/Bombardino Crocodilo.mp3" id="7_jdmn6"]
+[ext_resource type="Texture2D" uid="uid://cr7x4dgbva2pp" path="res://assets/nuke.webp" id="8_c2hob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d40i"]
 radius = 125.126
@@ -22,6 +23,9 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aowmi"]
 size = Vector2(210.678, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5y0x"]
+radius = 430.019
 
 [node name="Character" type="Area2D"]
 position = Vector2(-1, 0)
@@ -100,6 +104,31 @@ default_color = Color(1, 0, 0, 1)
 stream = ExtResource("7_jdmn6")
 autoplay = true
 
+[node name="nuke" type="Area2D" parent="."]
+visible = false
+collision_layer = 64
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="nuke"]
+z_index = -2
+position = Vector2(-3, -50)
+scale = Vector2(3.3975, 3.3975)
+texture = ExtResource("8_c2hob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nuke"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_r5y0x")
+
+[node name="nukeTimer" type="Timer" parent="nuke"]
+wait_time = 0.5
+one_shot = true
+
+[node name="nukeCooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="Pickaxe" to="." method="_on_pickaxe_area_entered"]
 [connection signal="finished" from="AudioPlayer" to="." method="_on_audio_player_finished"]
+[connection signal="timeout" from="nuke/nukeTimer" to="." method="_on_nuke_timer_timeout"]
+[connection signal="timeout" from="nukeCooldown" to="." method="_on_nuke_cooldown_timeout"]

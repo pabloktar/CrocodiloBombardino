@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://sfi4by3jiv4e"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_31pah"]
+[ext_resource type="PackedScene" uid="uid://rbarsuai6xgt" path="res://scenes/xp_orb.tscn" id="2_hsh1b"]
+[ext_resource type="Texture2D" uid="uid://dltci8ct63hqt" path="res://assets/Bang.png" id="3_vvcd3"]
+[ext_resource type="Texture2D" uid="uid://h4aviaxx0myt" path="res://assets/enemies/gnome-sheet.png" id="5_vllri"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yye25"]
+atlas = ExtResource("5_vllri")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l26nj"]
+atlas = ExtResource("5_vllri")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvb53"]
+atlas = ExtResource("5_vllri")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5d0w"]
+atlas = ExtResource("5_vllri")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l24m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yye25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l26nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvb53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5d0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2y2u"]
+size = Vector2(142, 313)
+
+[node name="enemy" type="Area2D" groups=["enemy"]]
+collision_layer = 2
+script = ExtResource("1_31pah")
+speed = 150
+xp_scene = ExtResource("2_hsh1b")
+
+[node name="Tralalero" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.499996, -3.8147e-06)
+scale = Vector2(2.38281, 2.4375)
+sprite_frames = SubResource("SpriteFrames_2l24m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_b2y2u")
+
+[node name="Bang" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_vvcd3")
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

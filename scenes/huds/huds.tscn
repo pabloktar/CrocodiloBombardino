@@ -182,6 +182,39 @@ offset_bottom = 723.0
 scale = Vector2(0.964698, 1.64)
 icon = ExtResource("6_6y4hy")
 
+[node name="Nuke cooldown" type="Label" parent="."]
+visible = false
+offset_left = 933.0
+offset_top = 291.0
+offset_right = 1463.0
+offset_bottom = 373.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_cm0xh")
+theme_override_font_sizes/font_size = 64
+text = "Nuke Cooldown"
+
+[node name="error" type="Timer" parent="Nuke cooldown"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 944.0
+offset_top = 1028.0
+offset_right = 1514.0
+offset_bottom = 1280.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_cm0xh")
+theme_override_font_sizes/font_size = 64
+text = "CONTROLS: WASD
+NUKE: SPACE
+Boss fight in 1 minute
+GOOD LUCK!!!"
+
+[node name="inst_timer" type="Timer" parent="Instructions"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="collect_xp" from="." to="EXP" method="_on_huds_collect_xp"]
 [connection signal="lvl_up" from="EXP" to="." method="_on_exp_lvl_up"]
 [connection signal="lvl_up" from="EXP" to="EXP/Label" method="_on_exp_lvl_up"]
@@ -198,3 +231,5 @@ icon = ExtResource("6_6y4hy")
 [connection signal="pressed" from="Lvl_up_Minecraft/ChoiceUpgradeArmor" to="." method="_on_choice_upgrade_armor_pressed"]
 [connection signal="pressed" from="Lvl_up_Minecraft/ChoiceBack" to="." method="_on_choice_back_Subway_pressed"]
 [connection signal="pressed" from="Disabled/ChoiceTetris" to="." method="_on_choice_tetris_pressed"]
+[connection signal="timeout" from="Nuke cooldown/error" to="." method="_on_error_timeout"]
+[connection signal="timeout" from="Instructions/inst_timer" to="." method="_on_inst_timer_timeout"]

@@ -129,3 +129,18 @@ func _on_choice_get_armor_pressed() -> void:
 func _on_choice_upgrade_armor_pressed() -> void:
 	lvl_up.emit("helmet");
 	wrap_lvl_up();
+
+
+func _on_character_nuke_error(time: float) -> void:
+	$"Nuke cooldown".text = "Nuke cooldown: " +  str (int(time * 100) / 100.0 );
+	$"Nuke cooldown".show();
+	$"Nuke cooldown/error".start()
+	
+
+
+func _on_error_timeout() -> void:
+	$"Nuke cooldown".hide();
+
+
+func _on_inst_timer_timeout() -> void:
+	$Instructions.hide();

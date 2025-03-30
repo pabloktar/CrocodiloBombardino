@@ -5,6 +5,7 @@ extends Area2D
 signal collect_xp;
 signal collect_coin;
 signal death;
+signal nuke_error(time: float);
 
 var max_hp = 100
 var current_hp = 100
@@ -38,13 +39,15 @@ var audio_list = {
 	"sweden": "res://assets/audio/c418-sweden-minecraft-volume-alpha.ogg",
 	"subway":"res://assets/audio/Subway-Surfers-Theme-Sound-Effect.mp3",
 	"bombardino":"res://assets/audio/Bombardino Crocodilo.mp3",
-	"scary":"res://assets/audio/Scary Tiktok Music - Meme Effect Sound.mp3"
+	"scary":"res://assets/audio/Scary Tiktok Music - Meme Effect Sound.mp3",
+	"chill":"res://assets/audio/Just A Chill Guy.mp3"
 }
 
 var current_track = "scary"
 
 var damage_multiplier = 1.0
-
+var nuke_radius: float;
+var nuke_cooldown: bool;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,7 +57,7 @@ func _ready() -> void:
 	$Pickaxe.hide();
 	$Sprite/helmet.hide()
 	play_audio("bombardino");
-
+	nuke_radius = $nuke/CollisionShape2D.shape.radius;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -86,6 +89,14 @@ func _process(delta: float) -> void:
 	if(current_hp == 0):
 		death.emit()
 		queue_free()
+	if(Input.is_key_pressed(KEY_SPACE)):
+		if(nuke_cooldown):
+			nuke_error.emit($nukeCooldown.time_left);
+		else:
+			$nuke.show()
+			$nuke/nukeTimer.start()
+			$nukeCooldown.start()
+		
 	
 func render_hp_bar():
 	var ratio = 1.0 * current_hp / max_hp
@@ -150,9 +161,24 @@ func play_audio(name: String):
 	
 	if(name == "subway"):
 		$AudioPlayer.volume_db = -10
+	elif(name == mc_music):
+		$AudioPlayer.volume_db = 5
 	else:
 		$AudioPlayer.volume_db = 0
 	$AudioPlayer.play()
 
 func _on_audio_player_finished() -> void:
 	play_audio(current_track)
+
+
+func _on_nuke_timer_timeout() -> void:
+	$nuke.hide();
+	nuke_cooldown = true;
+
+
+func _on_nuke_cooldown_timeout() -> void:
+	nuke_cooldown = false
+
+
+func _on_boss_timer_timeout() -> void:
+	play_audio("chill");

@@ -12,11 +12,20 @@ scale = Vector2(1.33281, 1.32593)
 texture = ExtResource("1_o0qnl")
 
 [node name="Restart" type="Button" parent="DeathScreen"]
-offset_left = -157.186
-offset_top = 159.134
-offset_right = 150.814
-offset_bottom = 342.134
+offset_left = -538.336
+offset_top = 153.854
+offset_right = -230.336
+offset_bottom = 336.854
 text = "Restart
 "
 
+[node name="Restart2" type="Button" parent="DeathScreen"]
+offset_left = 168.441
+offset_top = 159.888
+offset_right = 476.441
+offset_bottom = 342.888
+text = "See the victory screen
+"
+
 [connection signal="pressed" from="DeathScreen/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathScreen/Restart2" to="." method="_on_restart_2_pressed"]

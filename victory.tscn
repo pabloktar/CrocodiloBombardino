@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj8cvthbjq2q0"]
+
+[ext_resource type="Script" path="res://victory.gd" id="1_a4fle"]
+[ext_resource type="Texture2D" uid="uid://b8rkrx4ghv1ma" path="res://products-fortnite-hoodie-victory-royale_e85483a3-9e05-47dd-a71c-e3a63f52873d-480x480.jpg" id="2_q4sn7"]
+[ext_resource type="VideoStream" path="res://assets/0330.ogv" id="3_bis37"]
+
+[node name="DeathScreen" type="Node"]
+script = ExtResource("1_a4fle")
+
+[node name="Products-fortnite-hoodie-victory-royaleE85483a3-9e05-47Dd-a71c-e3a63f52873d-480x480" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1116, 735)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("2_q4sn7")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 2558.0
+offset_bottom = 1432.0
+stream = ExtResource("3_bis37")
+autoplay = true
