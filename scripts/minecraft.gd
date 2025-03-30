@@ -3,11 +3,13 @@ extends CanvasLayer
 @export var activate_key1 = KEY_1
 @export var activate_key2 = KEY_2
 
+var deathscreen = preload("res://death_screen.tscn").instantiate()
 
 signal collect_xp;
 signal pause;
 signal unpause;
 signal lvl_up(mode: String);
+signal restart;
 
 var lvl_up_options: int;
 
@@ -22,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(Input.is_key_pressed(activate_key1)):
 		collect_xp.emit(100);
-	
+
 
 
 func _on_character_collect_xp() -> void:
@@ -97,8 +99,10 @@ func _on_choice_upgrade_train_pressed() -> void:
 	wrap_lvl_up();
 	
 func _on_character_death():
-	pause.emit();
-	$DeathScreen.show()
+	print("oh no")
+	get_tree().root.add_child(deathscreen)
+	get_parent().queue_free()
+	
 
 
 func _on_choice_get_pickaxe_pressed() -> void:
@@ -125,7 +129,3 @@ func _on_choice_get_armor_pressed() -> void:
 func _on_choice_upgrade_armor_pressed() -> void:
 	lvl_up.emit("helmet");
 	wrap_lvl_up();
-
-
-func _on_start_pressed() -> void:
-	get_tree().reload_current_scene()

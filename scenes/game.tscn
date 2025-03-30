@@ -92,6 +92,7 @@ y_sort_origin = -100
 [connection signal="lvl_up" from="Huds" to="." method="_on_huds_lvl_up"]
 [connection signal="lvl_up" from="Huds" to="Character" method="_on_huds_lvl_up"]
 [connection signal="pause" from="Huds" to="." method="_on_huds_pause"]
+[connection signal="restart" from="Huds" to="." method="restart_game"]
 [connection signal="unpause" from="Huds" to="." method="_on_huds_unpause"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="TrainSpawner/SpawnTimer" to="TrainSpawner" method="_on_spawn_timer_timeout"]

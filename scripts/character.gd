@@ -85,6 +85,7 @@ func _process(delta: float) -> void:
 	
 	if(current_hp == 0):
 		death.emit()
+		queue_free()
 	
 func render_hp_bar():
 	var ratio = 1.0 * current_hp / max_hp

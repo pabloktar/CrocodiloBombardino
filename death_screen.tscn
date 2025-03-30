@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://mllp4kgtx54u"]
+
+[ext_resource type="Texture2D" uid="uid://bxwsrhb3cqgn6" path="res://assets/Are_you_deadass.png" id="1_o0qnl"]
+[ext_resource type="Script" path="res://death_screen.gd" id="1_u0eg5"]
+
+[node name="DeathScreen" type="Node"]
+script = ExtResource("1_u0eg5")
+
+[node name="DeathScreen" type="Sprite2D" parent="."]
+position = Vector2(1276.5, 722)
+scale = Vector2(1.33281, 1.32593)
+texture = ExtResource("1_o0qnl")
+
+[node name="Restart" type="Button" parent="DeathScreen"]
+offset_left = -157.186
+offset_top = 159.134
+offset_right = 150.814
+offset_bottom = 342.134
+text = "Restart
+"
+
+[connection signal="pressed" from="DeathScreen/Restart" to="." method="_on_restart_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdoqh6g0m1qf2"]
+[gd_scene load_steps=16 format=3 uid="uid://bdoqh6g0m1qf2"]
 
 [ext_resource type="Script" path="res://scripts/minecraft.gd" id="1_a3n26"]
 [ext_resource type="Texture2D" uid="uid://b18nbtxwgftkx" path="res://assets/Minecraft HUD.png" id="1_tkjfl"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://br8xreg4m5til" path="res://assets/getTrain.png" id="9_wx2jl"]
 [ext_resource type="Texture2D" uid="uid://pdd81uubbp3u" path="res://assets/upgradeTrain.png" id="10_lerev"]
 [ext_resource type="Texture2D" uid="uid://ckfjrrpc3spbm" path="res://assets/pickaxe_get.png" id="11_byfux"]
-[ext_resource type="Texture2D" uid="uid://bxwsrhb3cqgn6" path="res://assets/Are_you_deadass.png" id="12_6i8u7"]
 [ext_resource type="Texture2D" uid="uid://dtbqmcs4trpk6" path="res://assets/pickaxe_upgrade.png" id="12_y2c7a"]
 [ext_resource type="Texture2D" uid="uid://w4vb6r12ge3x" path="res://assets/armor_get.png" id="13_c1ydi"]
 [ext_resource type="Texture2D" uid="uid://bm0vxto1vcgsg" path="res://assets/armor_upgrade.png" id="14_txej3"]
@@ -183,27 +182,6 @@ offset_bottom = 723.0
 scale = Vector2(0.964698, 1.64)
 icon = ExtResource("6_6y4hy")
 
-[node name="DeathScreen" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1276.5, 722)
-scale = Vector2(1.33281, 1.32593)
-texture = ExtResource("12_6i8u7")
-
-[node name="Start" type="Button" parent="DeathScreen"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1192.22
-offset_top = -362.011
-offset_right = -736.216
-offset_bottom = -179.011
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 128
-text = "Restart"
-
 [connection signal="collect_xp" from="." to="EXP" method="_on_huds_collect_xp"]
 [connection signal="lvl_up" from="EXP" to="." method="_on_exp_lvl_up"]
 [connection signal="lvl_up" from="EXP" to="EXP/Label" method="_on_exp_lvl_up"]
@@ -220,4 +198,3 @@ text = "Restart"
 [connection signal="pressed" from="Lvl_up_Minecraft/ChoiceUpgradeArmor" to="." method="_on_choice_upgrade_armor_pressed"]
 [connection signal="pressed" from="Lvl_up_Minecraft/ChoiceBack" to="." method="_on_choice_back_Subway_pressed"]
 [connection signal="pressed" from="Disabled/ChoiceTetris" to="." method="_on_choice_tetris_pressed"]
-[connection signal="pressed" from="DeathScreen/Start" to="." method="_on_start_pressed"]

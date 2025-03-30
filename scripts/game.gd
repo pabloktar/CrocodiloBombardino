@@ -28,3 +28,6 @@ func _on_huds_lvl_up(mode: String) -> void:
 		else:
 			$TrainSpawner.counter += 1;
 		
+func restart_game():
+	queue_free();
+	get_tree().reload_current_scene();
